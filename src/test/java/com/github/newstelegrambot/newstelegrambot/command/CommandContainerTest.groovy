@@ -34,7 +34,7 @@ class CommandContainerTest {
     @Test
     public void shouldReturnUnknownCommand() {
 
-        String unknownCommand = "/asdgsgda";
+        String unknownCommand = "/asdgsgda"
         Command command = commandContainer.retrieveCommand(unknownCommand);
         Assertions.assertEquals(UnknownCommand.class, command);
 
