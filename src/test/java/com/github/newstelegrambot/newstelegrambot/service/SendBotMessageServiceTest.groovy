@@ -8,20 +8,20 @@ import org.mockito.Mockito
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 
 @DisplayName("Unit-testing for SendMessageServiceTest")
-class SendBotMessageServiceTest {
+public class SendBotMessageServiceTest {
 
     private SendBotMessageService sendBotMessageService;
 
     private NewTelegramBot newTelegramBot;
 
     @BeforeEach
-    void unit(){
+    public void unit(){
         newTelegramBot = Mockito.mock(NewTelegramBot.class);
         sendBotMessageService = new SendBotMessageServiceImpl(newTelegramBot);
         }
 
     @Test
-    void shouldPropertySendMessage() {
+    public void shouldPropertySendMessage() {
 
         String chatId = 12345L;
         String message = "some message";

@@ -2,11 +2,11 @@ version: "3.8"
 
 services:
  ntb-db:
-   image: mysql:5.7
+   image: 'mysql:5.7'
    restart: always
-   container_name: TEST_News_Telegram_Bot_database
+   container_name: 'TEST_News_Telegram_Bot_database'
    environment:
-     MYSQL_DATABASE: DEV_NTB_DB
+     MYSQL_DATABASE: 'DEV_NTB_DB'
      # So you don't have to use root, but you can if you like
      MYSQL_USER: user
      # You can use whatever password you like

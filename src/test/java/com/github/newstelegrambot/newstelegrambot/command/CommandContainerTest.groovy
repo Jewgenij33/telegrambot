@@ -1,31 +1,24 @@
 package com.github.newstelegrambot.newstelegrambot.command
 
 import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageService
-import com.github.newstelegrambot.newstelegrambot.service.TelegramUserService
+import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageServiceImpl
+import org.apache.http.util.Asserts
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.Mock
-import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.Mockito
 
 @DisplayName("Unit-testing for CommandContainer")
-@ExtendWith(MockitoExtension.class)
-public class CommandContainerTest {
+class CommandContainerTest {
 
     private CommandContainer commandContainer;
 
-    @Mock
-    TelegramUserService telegramUserService;
-    SendBotMessageService sendBotMessageService;
-
     @BeforeEach
-    public void init() {
+    void init() {
 
-//        TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
-//        SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
-        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
+        SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
+        commandContainer = new CommandContainer(sendBotMessageService)
 
     }
 
@@ -39,11 +32,11 @@ public class CommandContainerTest {
     }
 
     @Test
-    void shouldReturnUnknownCommand() {
+    public void shouldReturnUnknownCommand() {
 
-        String unknownCommand = "/asdgsgda"
+        String unknownCommand = "/asdgsgda";
         Command command = commandContainer.retrieveCommand(unknownCommand);
-        Assertions.assertEquals(UnknownCommand.class, command.getClass());
+        Assertions.assertEquals(UnknownCommand.class, command);
 
     }
 }
