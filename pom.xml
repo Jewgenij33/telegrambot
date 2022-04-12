@@ -12,41 +12,24 @@
 	<groupId>com.github.newstelegrambot</groupId>
 	<artifactId>newstelegrambot</artifactId>
 	<version>0.3.0-SNAPSHOT</version>
-
-	<packaging>jar</packaging>
 	<name>News Telegram Bot</name>
 	<description>news telegram bot</description>
-	<developers>
-		<developer>
-			<id>yshastala</id>
-			<name>Yauhen Shastala</name>
-			<email>jewgenijszastalo@gmail.com</email>
-		</developer>
-	</developers>
 
 	<properties>
-		<java.version>11</java.version>
-		<spring.boot.starter.version>2.7.0</spring.boot.starter.version>
-		<flayway.version>8.5.12</flayway.version>
-		<mysql.version>8.0.29</mysql.version>
-		<telegrambots.srting.boot.starter.version>6.0.1</telegrambots.srting.boot.starter.version>
-		<lombook.version>1.18.24</lombook.version>
+		<java.version>1.8</java.version>
+		<spring.boot.starter.version>2.5.6</spring.boot.starter.version>
+		<spring.boot.starter.test.version>2.5.6</spring.boot.starter.test.version>
+		<flayway.core.version>8.0.2</flayway.core.version>
+		<mysql.version>8.0.27</mysql.version>
+		<spring.boot.starter.data.jpa.version>2.5.6</spring.boot.starter.data.jpa.version>
+		<telegrambots.srting.boot.starter.version>5.0.1</telegrambots.srting.boot.starter.version>
+		<lombook.version>1.18.22</lombook.version>
 		<spring.boot.maven.plugin.version>2.5.6</spring.boot.maven.plugin.version>
-		<groovy.version>3.0.10</groovy.version>
-		<hibernate.version>5.4.32.Final</hibernate.version>
-		<maven-compiler-plugin-version>3.10.1</maven-compiler-plugin-version>
+		<groovy.version>3.0.9</groovy.version>
+		<hibernate.core.version>6.0.0.Beta1</hibernate.core.version>
 	</properties>
 
 	<dependencies>
-
-		<!-- https://mvnrepository.com/artifact/org.junit/junit-bom -->
-		<dependency>
-			<groupId>org.junit</groupId>
-			<artifactId>junit-bom</artifactId>
-			<version>5.9.0-M1</version>
-			<type>pom</type>
-		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,32 +41,21 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring.boot.starter.version}</version>
+			<version>${spring.boot.starter.test.version}</version>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.vaadin.external.google</groupId>
-					<artifactId>android-json</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-			<version>8.5.12</version>
-    
+			<artifactId>flyway-maven-plugin</artifactId>
+			<version>${flayway.core.version}</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
 			<version>${mysql.version}</version>
 		</dependency>
 
@@ -91,7 +63,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>${spring.boot.starter.version}</version>
+			<version>${spring.boot.starter.data.jpa.version}</version>
 		</dependency>
 
 		<dependency>
@@ -113,14 +85,22 @@
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy</artifactId>
 			<version>${groovy.version}</version>
+		</dependency>
 
-		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>${hibernate.version}</version>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.core.version}</version>
 		</dependency>
-	</dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 
 	<build>
 		<plugins>
@@ -129,6 +109,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${spring.boot.maven.plugin.version}</version>
 			</plugin>
-        	</plugins>
+		</plugins>
 	</build>
+
 </project>
