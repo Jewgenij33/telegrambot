@@ -2,6 +2,9 @@ package com.github.newstelegrambot.newstelegrambot.bot;
 
 import com.github.newstelegrambot.newstelegrambot.command.CommandContainer;
 import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageServiceImpl;
+import com.github.newstelegrambot.newstelegrambot.service.TelegramUserService;
+import com.github.newstelegrambot.newstelegrambot.service.TelegramUserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -22,8 +25,10 @@ public class NewTelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public NewTelegramBot() {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+    @Autowired
+    public NewTelegramBot(TelegramUserService telegramUserService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this),
+                telegramUserService);
     }
 
     @Override

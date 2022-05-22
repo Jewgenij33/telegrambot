@@ -4,6 +4,7 @@ package com.github.newstelegrambot.newstelegrambot.command;
 import com.github.newstelegrambot.newstelegrambot.bot.NewTelegramBot;
 import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageService;
 import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageServiceImpl;
+import com.github.newstelegrambot.newstelegrambot.service.TelegramUserService;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,7 @@ abstract class AbstractCommandTest {
 
     protected NewTelegramBot telegramBot;
     protected SendBotMessageService sendBotMessageService;
+    protected TelegramUserService telegramUserService;
 
     @NotNull
     abstract String getCommandName();
