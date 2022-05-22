@@ -1,5 +1,6 @@
 package com.github.newstelegrambot.newstelegrambot.command;
 
+import junit.framework.TestCase;
 import org.junit.jupiter.api.DisplayName;
 
 import static com.github.newstelegrambot.newstelegrambot.command.CommandName.STAT;

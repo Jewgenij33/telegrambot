@@ -17,16 +17,15 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<spring.boot.starter.version>2.5.6</spring.boot.starter.version>
-		<spring.boot.starter.test.version>2.5.6</spring.boot.starter.test.version>
-		<flayway.core.version>8.0.2</flayway.core.version>
-		<mysql.version>8.0.27</mysql.version>
-		<spring.boot.starter.data.jpa.version>2.5.6</spring.boot.starter.data.jpa.version>
-		<telegrambots.srting.boot.starter.version>5.0.1</telegrambots.srting.boot.starter.version>
-		<lombook.version>1.18.22</lombook.version>
+		<spring.boot.starter.version>2.6.7</spring.boot.starter.version>
+		<flayway.core.version>8.5.10</flayway.core.version>
+		<mysql.version>8.0.29</mysql.version>
+		<telegrambots.srting.boot.starter.version>6.0.1</telegrambots.srting.boot.starter.version>
+		<lombook.version>1.18.24</lombook.version>
 		<spring.boot.maven.plugin.version>2.5.6</spring.boot.maven.plugin.version>
-		<groovy.version>3.0.9</groovy.version>
-		<hibernate.core.version>6.0.0.Beta1</hibernate.core.version>
+		<groovy.version>3.0.10</groovy.version>
+		<hibernate.core.version>6.0.1.Final</hibernate.core.version>
+		<maven-compiler-plugin-version>3.10.1</maven-compiler-plugin-version>
 	</properties>
 
 	<dependencies>
@@ -41,7 +40,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring.boot.starter.test.version}</version>
+			<version>${spring.boot.starter.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -63,7 +62,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>${spring.boot.starter.data.jpa.version}</version>
+			<version>${spring.boot.starter.version}</version>
 		</dependency>
 
 		<dependency>
@@ -109,7 +108,12 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${spring.boot.maven.plugin.version}</version>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+            </plugin>
+        </plugins>
 	</build>
 
 </project>
