@@ -1,7 +1,5 @@
-package com.github.newstelegrambot.newstelegrambot;
+package com.github.newstelegrambot.newstelegrambot.command;
 
-import com.github.newstelegrambot.newstelegrambot.command.Command;
-import com.github.newstelegrambot.newstelegrambot.command.StopCommand;
 import org.junit.jupiter.api.DisplayName;
 
 import static com.github.newstelegrambot.newstelegrambot.command.CommandName.STOP;
@@ -22,6 +20,6 @@ public class StopCommandTest extends AbstractCommandTest {
 
     @Override
     Command getCommand() {
-        return new StopCommand(sendBotMessageService);
+        return new StopCommand(sendBotMessageService, telegramUserService);
     }
 }

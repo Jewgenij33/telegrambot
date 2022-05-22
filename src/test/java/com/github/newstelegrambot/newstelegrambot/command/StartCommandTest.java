@@ -1,7 +1,5 @@
-package com.github.newstelegrambot.newstelegrambot;
+package com.github.newstelegrambot.newstelegrambot.command;
 
-import com.github.newstelegrambot.newstelegrambot.command.Command;
-import com.github.newstelegrambot.newstelegrambot.command.StartCommand;
 import org.junit.jupiter.api.DisplayName;
 
 import static com.github.newstelegrambot.newstelegrambot.command.CommandName.START;
@@ -22,6 +20,6 @@ class StartCommandTest extends AbstractCommandTest {
 
     @Override
     Command getCommand() {
-        return new StartCommand(sendBotMessageService);
+        return new StartCommand(sendBotMessageService, telegramUserService);
     }
 }
