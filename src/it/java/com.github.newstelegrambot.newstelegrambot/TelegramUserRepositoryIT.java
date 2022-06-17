@@ -1,7 +1,7 @@
-package com.github.newstelegrambot.newstelegrambot.repository;
+package com.github.newstelegrambot.newstelegrambot;
 
+import com.github.newstelegrambot.newstelegrambot.repository.TelegramUserRepository;
 import com.github.newstelegrambot.newstelegrambot.repository.entity.TelegramUser;
-import junit.framework.TestCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +18,12 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @ActiveProfiles("test")
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class TelegramUserRepositoryIntegrationTest extends TestCase {
+public class TelegramUserRepositoryIT {
 
     @Autowired
     TelegramUserRepository telegramUserRepository;
 
-    @Sql(scripts = {"/clearDbs.sql", "/telegram_user_test_db.sql"})
+    @Sql(scripts = {"/sql/clearDbs.sql", "/sql/telegram_user_test_db.sql"})
     @Test
     public void shouldProperlyFindAllActiveUsers() {
         List<TelegramUser> users = telegramUserRepository.findAllByActiveTrue();
@@ -31,7 +31,7 @@ public class TelegramUserRepositoryIntegrationTest extends TestCase {
         Assertions.assertEquals(5, users.size());
     }
 
-    @Sql(scripts = {"/clearDbs.sql"})
+    @Sql(scripts = {"/sql/clearDbs.sql"})
     @Test
     public void shouldProperlySaveTelegramUser() {
         TelegramUser telegramUser = new TelegramUser();
