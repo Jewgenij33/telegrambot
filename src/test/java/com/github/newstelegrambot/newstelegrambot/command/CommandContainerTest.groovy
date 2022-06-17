@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension
 
 @DisplayName("Unit-testing for CommandContainer")
 @ExtendWith(MockitoExtension.class)
+
 public class CommandContainerTest {
 
     private CommandContainer commandContainer;
@@ -22,11 +23,7 @@ public class CommandContainerTest {
 
     @BeforeEach
     public void init() {
-
-//        TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
-//        SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
         commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
-
     }
 
     @Test
@@ -44,6 +41,5 @@ public class CommandContainerTest {
         String unknownCommand = "/asdgsgda"
         Command command = commandContainer.retrieveCommand(unknownCommand);
         Assertions.assertEquals(UnknownCommand.class, command.getClass());
-
     }
 }

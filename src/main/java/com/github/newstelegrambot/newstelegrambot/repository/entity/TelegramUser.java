@@ -2,7 +2,9 @@ package com.github.newstelegrambot.newstelegrambot.repository.entity;
 
 import lombok.Data;
 
+
 import javax.persistence.*;
+
 
 @Data
 @Entity

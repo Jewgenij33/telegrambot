@@ -17,7 +17,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doReturn;
 
 @ExtendWith(MockitoExtension.class)
 abstract class AbstractCommandTest {
@@ -25,6 +25,7 @@ abstract class AbstractCommandTest {
 
     protected NewTelegramBot telegramBot;
     protected SendBotMessageService sendBotMessageService;
+  
     @Mock
     protected TelegramUserService telegramUserService;
 
