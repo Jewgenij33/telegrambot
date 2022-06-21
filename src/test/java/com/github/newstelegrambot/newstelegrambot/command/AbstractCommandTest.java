@@ -30,9 +30,7 @@ abstract class AbstractCommandTest {
 
     @NotNull
     abstract String getCommandName();
-
     abstract String getCommandMessage();
-
     abstract Command getCommand();
 
     @BeforeEach
