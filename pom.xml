@@ -2,14 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.5.2</version>
 	</parent>
+
 	<groupId>com.github.newstelegrambot</groupId>
 	<artifactId>newstelegrambot</artifactId>
 	<version>0.3.0-SNAPSHOT</version>
+
 	<packaging>jar</packaging>
 	<name>News Telegram Bot</name>
 	<description>news telegram bot</description>
@@ -23,16 +26,27 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<telegrambots.srting.boot.starter.version>6.0.1</telegrambots.srting.boot.starter.version>
-		<spring.boot.starter.version>2.6.7</spring.boot.starter.version>
-		<spring.boot.maven.plugin.version>2.5.6</spring.boot.maven.plugin.version>
+		<spring.boot.starter.version>2.7.0</spring.boot.starter.version>
 		<flayway.version>8.5.12</flayway.version>
 		<mysql.version>8.0.29</mysql.version>
+		<telegrambots.srting.boot.starter.version>6.0.1</telegrambots.srting.boot.starter.version>
 		<lombook.version>1.18.24</lombook.version>
+		<spring.boot.maven.plugin.version>2.5.6</spring.boot.maven.plugin.version>
 		<groovy.version>3.0.10</groovy.version>
+		<hibernate.version>5.4.32.Final</hibernate.version>
+		<maven-compiler-plugin-version>3.10.1</maven-compiler-plugin-version>
 	</properties>
 
 	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.junit/junit-bom -->
+		<dependency>
+			<groupId>org.junit</groupId>
+			<artifactId>junit-bom</artifactId>
+			<version>5.9.0-M1</version>
+			<type>pom</type>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -63,41 +77,49 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 			<version>8.5.12</version>
+    
 		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.29</version>
 			<scope>runtime</scope>
+			<version>${mysql.version}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>2.7.0</version>
+			<version>${spring.boot.starter.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.telegram</groupId>
 			<artifactId>telegrambots-spring-boot-starter</artifactId>
 			<version>${telegrambots.srting.boot.starter.version}</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.24</version>
+			<version>${lombook.version}</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy -->
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy</artifactId>
 			<version>${groovy.version}</version>
-		</dependency>
 
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -107,6 +129,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${spring.boot.maven.plugin.version}</version>
 			</plugin>
-        </plugins>
+        	</plugins>
 	</build>
 </project>
