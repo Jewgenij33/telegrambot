@@ -74,7 +74,6 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 			<version>2.7.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.telegram</groupId>
 			<artifactId>telegrambots-spring-boot-starter</artifactId>
@@ -93,6 +92,7 @@
 			<artifactId>groovy</artifactId>
 			<version>${groovy.version}</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
