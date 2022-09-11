@@ -16,6 +16,7 @@ jobs:
     - name: Set up MySQL
       uses: mirromutth/mysql-action@v1.1
       with:
+        host port: 3308
         mysql version: '5.7'
         mysql database: 'DEV_NTB_DB'
         mysql root password: 'root'

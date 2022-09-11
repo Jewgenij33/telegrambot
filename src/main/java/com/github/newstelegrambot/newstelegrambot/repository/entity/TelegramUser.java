@@ -1,6 +1,7 @@
 package com.github.newstelegrambot.newstelegrambot.repository.entity;
 
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 
