@@ -8,12 +8,9 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Shutdown Ubuntu MySQL (SUDO)
@@ -24,7 +21,7 @@ jobs:
         host port: 3327
         container port: 3306
         mysql version: '5.7'
-        mysql database: 'ntb_db'
+        mysql database: 'DEV_NTB_DB'
         mysql root password: 'root'
         mysql user: 'ntb_db_user'
         mysql password: 'ntb_db_password'
