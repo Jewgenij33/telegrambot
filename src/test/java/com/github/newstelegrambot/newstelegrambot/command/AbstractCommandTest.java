@@ -4,10 +4,12 @@ package com.github.newstelegrambot.newstelegrambot.command;
 import com.github.newstelegrambot.newstelegrambot.bot.NewTelegramBot;
 import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageService;
 import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageServiceImpl;
+import com.github.newstelegrambot.newstelegrambot.service.TelegramUserService;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -15,7 +17,6 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -24,12 +25,12 @@ abstract class AbstractCommandTest {
 
     protected NewTelegramBot telegramBot;
     protected SendBotMessageService sendBotMessageService;
+    @Mock
+    protected TelegramUserService telegramUserService;
 
     @NotNull
     abstract String getCommandName();
-
     abstract String getCommandMessage();
-
     abstract Command getCommand();
 
     @BeforeEach
