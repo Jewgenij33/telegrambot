@@ -12,17 +12,13 @@ import static java.util.Objects.nonNull;
 @Getter
 public class ParamRequests {
 
-    private final String query;
-    private final double lat;
-    private final double lon;
+    private final Double lat;
+    private final Double lon;
     private final Integer days;
     private final String KEY;
 
     public Map populateQueries() {
         Map queries = new HashMap<>();
-        if(nonNull(query)) {
-            queries.put("query", query);
-        }
         if(nonNull(lat)) {
             queries.put("lat", lat);
         }
@@ -32,7 +28,9 @@ public class ParamRequests {
         if(nonNull(days)) {
             queries.put("days", days);
         }
-        queries.put("key", KEY);
+        if(nonNull(days)) {
+            queries.put("key", KEY);
+        }
     return queries;
     }
 }

@@ -1,5 +1,8 @@
 package com.github.newstelegrambot.newstelegrambot.dto;
 
+/**
+ * Descriptions for codes in data::weather
+ */
 public enum Codes {
     THUNDERSTORM_WITH_LIGHT_RAIN,
     THUNDERSTORM_WITH_RAIN,
