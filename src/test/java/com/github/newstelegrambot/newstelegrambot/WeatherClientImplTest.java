@@ -2,10 +2,9 @@ package com.github.newstelegrambot.newstelegrambot;
 
 import com.github.newstelegrambot.newstelegrambot.dto.ParamRequests;
 import com.github.newstelegrambot.newstelegrambot.dto.WeatherInfo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 @DisplayName("Integration-level testing for WeatherClientImplTest")
 class WeatherClientImplTest {
@@ -23,12 +22,10 @@ class WeatherClientImplTest {
                 .build();
 
         //when
-        List<WeatherInfo> weatherInfoList = client.getParamRequests(param);
+        WeatherInfo weatherInfo = client.getParamRequests(param);
 
         //then
-//        Assertions.assertNotNull(weatherInfoList);
-//        Assertions.assertFalse(weatherInfoList.isEmpty());
-
-        System.out.println(weatherInfoList);
+        Assertions.assertNotNull(weatherInfo);
+        Assertions.assertNotNull(weatherInfo, "city_name=Ząbki");
     }
 }

@@ -4,11 +4,10 @@ import com.github.newstelegrambot.newstelegrambot.dto.ParamRequests;
 import com.github.newstelegrambot.newstelegrambot.dto.WeatherInfo;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import kong.unirest.GenericType;
+import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Implementation of the {@link WeatherClient} interface.
@@ -24,15 +23,18 @@ public class WeatherClientImpl implements WeatherClient{
         this.weatherApiPath = weatherApi;}
 
     @Override
-    public List<WeatherInfo> getParamRequests(
+    public WeatherInfo getParamRequests(
             @NotNull ParamRequests paramRequests) {
 
-        return Unirest.get(weatherApiPath)
-                .header("key", "55cc77d1c9b04e60937a575f545b607f")
+        WeatherInfo weatherInfo;
+
+      HttpResponse<WeatherInfo> resp;
+       resp = Unirest.get(weatherApiPath)
                 .queryString(paramRequests.populateQueries())
-                .asObject(new GenericType<List<WeatherInfo>>(){
-                })
-                .getBody();
+                .asObject(new GenericType<WeatherInfo>(){
+                });
+       weatherInfo = resp.getBody();
+       return weatherInfo;
 
 
     }
