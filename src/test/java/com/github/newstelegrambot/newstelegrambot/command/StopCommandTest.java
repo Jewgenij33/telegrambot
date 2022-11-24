@@ -10,11 +10,13 @@ public class StopCommandTest extends AbstractCommandTest {
 
     @Override
     String getCommandName() {
+
         return STOP.getCommandName();
     }
 
     @Override
     String getCommandMessage() {
+
         return STOP_MESSAGE;
     }
 
