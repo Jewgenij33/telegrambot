@@ -26,6 +26,8 @@ class WeatherClientImplTest {
 
         //then
         Assertions.assertNotNull(weatherInfo);
+
         Assertions.assertNotNull(weatherInfo, "city_name=Ząbki");
+//        System.out.println(weatherInfo);
     }
 }
