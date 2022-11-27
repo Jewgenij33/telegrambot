@@ -8,6 +8,8 @@ public enum CommandName {
     STOP("/stop"),
     HELP("/help"),
     STAT("/stat"),
+    CURRENT_WEATHER("/current"),
+    WEATHER_14_DAYS("/what_will_be"),
     NO("/");
 
 

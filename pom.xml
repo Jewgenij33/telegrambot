@@ -30,6 +30,8 @@
 		<mysql.version>8.0.29</mysql.version>
 		<lombook.version>1.18.24</lombook.version>
 		<groovy.version>3.0.10</groovy.version>
+		<spring.bootstarter.web.version>2.7.4</spring.bootstarter.web.version>
+		<unirest.version>3.13.11</unirest.version>
 	</properties>
 
 	<dependencies>
@@ -98,7 +100,19 @@
 			<version>${groovy.version}</version>
 		</dependency>
 
-	</dependencies>
+		<!-- https://mvnrepository.com/artifact/com.konghq/unirest-java -->
+		<dependency>
+			<groupId>com.konghq</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>${unirest.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
