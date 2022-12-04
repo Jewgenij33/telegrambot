@@ -1,8 +1,7 @@
 package com.github.newstelegrambot.newstelegrambot.command
 
 import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageService
-import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageServiceImpl
-import org.apache.http.util.Asserts
+import com.github.newstelegrambot.newstelegrambot.service.TelegramUserService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
@@ -18,8 +17,8 @@ class CommandContainerTest {
     void init() {
 
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
-        commandContainer = new CommandContainer(sendBotMessageService)
-
+        TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService)
     }
 
     @Test
@@ -36,7 +35,6 @@ class CommandContainerTest {
 
         String unknownCommand = "/asdgsgda";
         Command command = commandContainer.retrieveCommand(unknownCommand);
-        Assertions.assertEquals(UnknownCommand.class, command);
-
+        Assertions.assertEquals(UnknownCommand.class, command.getClass());
     }
 }
