@@ -10,7 +10,7 @@ public class WeatherInfo {
 
     private String city_name;
     private String country_code;
-    private DataClass dataClass;
+    private SmallData[] data;
     private Double lat;
     private Double lon;
     private Integer state_code;

@@ -1,17 +1,18 @@
 package com.github.newstelegrambot.newstelegrambot;
 
 import com.github.newstelegrambot.newstelegrambot.dto.ParamRequests;
+import com.github.newstelegrambot.newstelegrambot.dto.SmallData;
 import com.github.newstelegrambot.newstelegrambot.dto.WeatherInfo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 @DisplayName("Integration-level testing for WeatherClientImplTest")
 class WeatherClientImplTest {
 
     private final WeatherClient client = new WeatherClientImpl("http://api.weatherbit.io/v2.0/forecast/daily");
-
+    WeatherInfo weatherInfo;
+    SmallData smallData;
     @Test
     public void shouldGetCurrentWeather(){
         //given
@@ -23,12 +24,18 @@ class WeatherClientImplTest {
                 .build();
 
         //when
-        List<WeatherInfo> weatherInfoList = client.getParamRequests(param);
+        weatherInfo = client.getParamRequests(param);
 
         //then
-//        Assertions.assertNotNull(weatherInfoList);
-//        Assertions.assertFalse(weatherInfoList.isEmpty());
+        Assertions.assertNotNull(weatherInfo);
+        Assertions.assertNotNull(weatherInfo, "city_name=Ząbki");
+//        System.out.println(weatherInfo);
+    }
+    @Test
+    public void showMeWeatherTomorrow(){
+        shouldGetCurrentWeather();
+        smallData = client.getDataInfo(weatherInfo, 1);
 
-        System.out.println(weatherInfoList);
+        System.out.println(smallData);
     }
 }

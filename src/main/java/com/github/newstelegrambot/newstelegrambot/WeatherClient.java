@@ -1,9 +1,8 @@
 package com.github.newstelegrambot.newstelegrambot;
 
 import com.github.newstelegrambot.newstelegrambot.dto.ParamRequests;
+import com.github.newstelegrambot.newstelegrambot.dto.SmallData;
 import com.github.newstelegrambot.newstelegrambot.dto.WeatherInfo;
-
-import java.util.List;
 
 public interface WeatherClient {
 
@@ -13,7 +12,7 @@ public interface WeatherClient {
      * @return
      */
 
-    List<WeatherInfo> getParamRequests(ParamRequests paramRequests);
-
+    WeatherInfo getParamRequests(ParamRequests paramRequests);
+    SmallData getDataInfo (WeatherInfo weatherInfo, int day);
 
 }

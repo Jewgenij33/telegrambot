@@ -9,7 +9,7 @@ public enum CommandName {
     HELP("/help"),
     STAT("/stat"),
     CURRENT_WEATHER("/current"),
-    WEATHER_14_DAYS("/what_will_be"),
+    WEATHER_DAILY("/what_will_be"),
     NO("/");
 
 

@@ -1,14 +1,16 @@
 package com.github.newstelegrambot.newstelegrambot;
 
 import com.github.newstelegrambot.newstelegrambot.dto.ParamRequests;
+import com.github.newstelegrambot.newstelegrambot.dto.SmallData;
 import com.github.newstelegrambot.newstelegrambot.dto.WeatherInfo;
+import com.google.gson.Gson;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import kong.unirest.GenericType;
 import kong.unirest.Unirest;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Implementation of the {@link WeatherClient} interface.
@@ -24,16 +26,24 @@ public class WeatherClientImpl implements WeatherClient{
         this.weatherApiPath = weatherApi;}
 
     @Override
-    public List<WeatherInfo> getParamRequests(
-            @NotNull ParamRequests paramRequests) {
+    public WeatherInfo getParamRequests(
+                         @NotNull ParamRequests paramRequests) {
 
-        return Unirest.get(weatherApiPath)
-                .header("key", "55cc77d1c9b04e60937a575f545b607f")
-                .queryString(paramRequests.populateQueries())
-                .asObject(new GenericType<List<WeatherInfo>>(){
+       return Unirest.get(weatherApiPath)
+               .queryString(paramRequests.populateQueries())
+               .asObject(new GenericType<WeatherInfo>(){
                 })
-                .getBody();
+               .getBody();
+    }
 
+    @Override
+    public SmallData getDataInfo(WeatherInfo weatherInfo, int day) {
 
+        JSONObject jsonObject = new JSONObject(weatherInfo);
+        JSONArray jsonArray = jsonObject.getJSONArray("data");
+        Gson gson = new Gson();
+        JSONObject object = jsonArray.getJSONObject(day);
+
+            return gson.fromJson(object.toString(), SmallData.class);
     }
 }
