@@ -29,12 +29,12 @@ class WeatherClientImplTest {
         //then
         Assertions.assertNotNull(weatherInfo);
         Assertions.assertNotNull(weatherInfo, "city_name=Ząbki");
-//        System.out.println(weatherInfo);
+        System.out.println(weatherInfo);
     }
     @Test
     public void showMeWeatherTomorrow(){
         shouldGetCurrentWeather();
-        smallData = client.getDataInfo(weatherInfo, 1);
+        smallData = client.getDataInfo(weatherInfo, 5);
 
         System.out.println(smallData);
     }

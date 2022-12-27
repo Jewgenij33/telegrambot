@@ -15,6 +15,7 @@ public class CurrentWeather implements Command{
     private final SendBotMessageService sendBotMessageService;
     TelegramUserService telegramUserService;
     public static String CURRENT_WEATHER;
+    //todo
     WeatherClient weatherClient = new WeatherClientImpl("https://api.weatherbit.io/v2.0/forecast/daily");
 
     public CurrentWeather (SendBotMessageService sendBotMessageService,
@@ -29,6 +30,7 @@ public class CurrentWeather implements Command{
                 .lat(52.204767)
                 .lon(21.067853)
                 .days(1)
+                //todo
                 .KEY("55cc77d1c9b04e60937a575f545b607f")
                 .build()).toString();
 
