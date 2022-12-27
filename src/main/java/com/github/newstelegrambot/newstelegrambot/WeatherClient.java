@@ -9,7 +9,6 @@ public interface WeatherClient {
     /**
      * Get all fields by {@link WeatherInfo}
      *
-     * @return
      */
 
     WeatherInfo getParamRequests(ParamRequests paramRequests);

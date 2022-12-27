@@ -19,17 +19,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class WeatherClientImpl implements WeatherClient{
 
-    private final String weatherApiPath;
-
-    public WeatherClientImpl(@Value("${weather.api.path}")
-                             String weatherApi) {
-        this.weatherApiPath = weatherApi;}
+    private final String weatherUrl;
+    public WeatherClientImpl(@Value("${weather.url}")
+                             String weatherUrl) {
+        this.weatherUrl = weatherUrl;}
 
     @Override
     public WeatherInfo getParamRequests(
                          @NotNull ParamRequests paramRequests) {
 
-       return Unirest.get(weatherApiPath)
+       return Unirest.get(weatherUrl)
                .queryString(paramRequests.populateQueries())
                .asObject(new GenericType<WeatherInfo>(){
                 })
@@ -44,6 +43,7 @@ public class WeatherClientImpl implements WeatherClient{
         Gson gson = new Gson();
         JSONObject object = jsonArray.getJSONObject(day);
 
-            return gson.fromJson(object.toString(), SmallData.class);
+        return gson.fromJson(object.toString(), SmallData.class);
+
     }
 }

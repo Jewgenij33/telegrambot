@@ -9,4 +9,12 @@ public class Weather {
     private String icon;
     private String description;
 
+    @Override
+    public String toString() {
+        return    "code: " + code + "\n"
+                + "icon: " +icon + "\n"
+                + "description: " + description;
+
+    }
+
 }
