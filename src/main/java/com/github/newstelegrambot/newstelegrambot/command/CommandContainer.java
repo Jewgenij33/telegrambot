@@ -1,8 +1,8 @@
 package com.github.newstelegrambot.newstelegrambot.command;
 
-import com.github.newstelegrambot.newstelegrambot.WeatherClient;
 import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageService;
 import com.github.newstelegrambot.newstelegrambot.service.TelegramUserService;
+import com.github.newstelegrambot.newstelegrambot.WeatherClient;
 import com.google.common.collect.ImmutableMap;
 
 import static com.github.newstelegrambot.newstelegrambot.command.CommandName.*;
@@ -16,7 +16,8 @@ public class CommandContainer {
     private final Command unknownCommand;
 
     public CommandContainer(SendBotMessageService sendBotMessageService,
-                            TelegramUserService telegramUserService){
+                            TelegramUserService telegramUserService,
+                            WeatherClient weatherClient){
 
         commandMap = ImmutableMap.<String, Command>builder()
                 .put(START.getCommandName(), new StartCommand(sendBotMessageService,
@@ -28,7 +29,7 @@ public class CommandContainer {
                 .put(STAT.getCommandName(), new StatCommand(sendBotMessageService,
                                                                 telegramUserService))
                 .put(CURRENT_WEATHER.getCommandName(), new CurrentWeather(sendBotMessageService,
-                        telegramUserService))
+                        telegramUserService, weatherClient))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);

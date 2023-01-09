@@ -6,6 +6,7 @@ import com.github.newstelegrambot.newstelegrambot.dto.WeatherInfo;
 
 public interface WeatherClient {
 
+
     /**
      * Get all fields by {@link WeatherInfo}
      *

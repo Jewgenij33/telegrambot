@@ -1,16 +1,16 @@
 package com.github.newstelegrambot.newstelegrambot.bot;
 
+import com.github.newstelegrambot.newstelegrambot.WeatherClient;
 import com.github.newstelegrambot.newstelegrambot.command.CommandContainer;
 import com.github.newstelegrambot.newstelegrambot.service.SendBotMessageServiceImpl;
 import com.github.newstelegrambot.newstelegrambot.service.TelegramUserService;
-import com.github.newstelegrambot.newstelegrambot.service.TelegramUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import static com.github.newstelegrambot.newstelegrambot.command.CommandName.*;
+import static com.github.newstelegrambot.newstelegrambot.command.CommandName.NO;
 
 @Component
 public class NewTelegramBot extends TelegramLongPollingBot {
@@ -23,16 +23,17 @@ public class NewTelegramBot extends TelegramLongPollingBot {
     @Value("${bot.token}")
     private String token;
 
-    private final CommandContainer commandContainer;
 
+    private final CommandContainer commandContainer;
     @Autowired
-    public NewTelegramBot(TelegramUserService telegramUserService) {
+    public NewTelegramBot(TelegramUserService telegramUserService,
+                          WeatherClient weatherClient) {
         this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this),
-                telegramUserService);
+                telegramUserService, weatherClient);
     }
 
     @Override
-    public void onUpdateReceived(Update update) {
+    public void onUpdateReceived(Update update)  {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String message = update.getMessage().getText().trim();
 
@@ -42,7 +43,6 @@ public class NewTelegramBot extends TelegramLongPollingBot {
             } else {
                 commandContainer.retrieveCommand(NO.getCommandName()).execute(update);
             }
-
         }
     }
 
@@ -55,4 +55,5 @@ public class NewTelegramBot extends TelegramLongPollingBot {
     public String getBotToken() {
         return token;
     }
+
 }

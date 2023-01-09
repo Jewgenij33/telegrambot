@@ -4,29 +4,29 @@ import com.github.newstelegrambot.newstelegrambot.dto.ParamRequests;
 import com.github.newstelegrambot.newstelegrambot.dto.SmallData;
 import com.github.newstelegrambot.newstelegrambot.dto.WeatherInfo;
 import com.google.gson.Gson;
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import kong.unirest.GenericType;
 import kong.unirest.Unirest;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
  * Implementation of the {@link WeatherClient} interface.
  */
-
 @Component
 public class WeatherClientImpl implements WeatherClient{
-
     private final String weatherUrl;
+
+    @Autowired
     public WeatherClientImpl(@Value("${weather.url}")
-                             String weatherUrl) {
-        this.weatherUrl = weatherUrl;}
+                                 String url) {
+        this.weatherUrl = url;
+    }
 
     @Override
-    public WeatherInfo getParamRequests(
-                         @NotNull ParamRequests paramRequests) {
+    public WeatherInfo getParamRequests(ParamRequests paramRequests) {
 
        return Unirest.get(weatherUrl)
                .queryString(paramRequests.populateQueries())
@@ -46,4 +46,5 @@ public class WeatherClientImpl implements WeatherClient{
         return gson.fromJson(object.toString(), SmallData.class);
 
     }
+
 }
