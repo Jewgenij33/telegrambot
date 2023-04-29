@@ -11,22 +11,21 @@ import org.telegram.telegrambots.meta.api.objects.Update;
  */
 
 public class CurrentWeather implements Command {
-    Update update;
-
     private final SendBotMessageService sendBotMessageService;
     TelegramUserService telegramUserService;
 
     public static String CURRENT_WEATHER;
     //todo
     private final WeatherClient weatherClient;
-
     public CurrentWeather(SendBotMessageService sendBotMessageService,
                           TelegramUserService telegramUserService,
-                          WeatherClient weatherClient) {
+                          WeatherClient weatherClient ) {
         this.sendBotMessageService = sendBotMessageService;
         this.telegramUserService = telegramUserService;
         this.weatherClient = weatherClient;
     }
+
+
 
     @Override
     public void execute(Update update) {
@@ -39,11 +38,14 @@ public class CurrentWeather implements Command {
                 .KEY("55cc77d1c9b04e60937a575f545b607f")
                 .build()).toString();
 
-
         sendBotMessageService.sendMessage(update.getMessage()
                                                 .getChatId()
                                                 .toString(),
                                                  CURRENT_WEATHER);
 
+        try{Thread.sleep(14400000);}
+        catch (Exception e){}
+
+        execute(update);
     }
 }
